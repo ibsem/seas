@@ -3,27 +3,31 @@
 <head>
     <title>Resultados da Pesquisa</title>
 </head>
-<body>
+    <body>
     <h1>Resultados da Pesquisa</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>País</th>
-                <th>Nome da Espécie</th>
-                <th>Filo</th>
-            </tr>
-        </thead>
-        <tbody>
+        <form method="POST" action="{{ url_for('enviar_resultados') }}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Filo</th>
+                        <th>Quantidade
+                            Espécies</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for resultado in resultados %}
+                    <tr>
+                        <td >{{ resultado[0] }}</td>
+                        <td >{{ resultado[1] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             {% for resultado in resultados %}
-            <tr>
-                <td>{{ resultado[0] }}</td>
-                <td>{{ resultado[1] }}</td>
-                <td>{{ resultado[2] }}</td>
-                <td>{{ resultado[3] }}</td>
-            </tr>
+                <input type="hidden" name="filo" value="{{ resultado[0] }}">
+                <input type="hidden" name="quantidade" value="{{ resultado[1] }}">
             {% endfor %}
-        </tbody>
-    </table>
-</body>
+            <input type="submit" value="Enviar">
+        </form>
+    </body>
 </html>
