@@ -3,6 +3,7 @@ import pymysql
 import os
 caminhoApp = os.getcwd()
 
+
 # Configurações do banco de dados MySQL
 host = 'localhost'
 port = 3306

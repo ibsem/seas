@@ -32,8 +32,8 @@ criar_tabela = '''
 CREATE TABLE IF NOT EXISTS solucaoFilo (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nomeSolucao VARCHAR(255),
-    descricao VARCHAR(1200),
-    refBibliografica VARCHAR(400)
+    descricao VARCHAR(3000),
+    refBibliografica VARCHAR(800)
 )
 '''
 

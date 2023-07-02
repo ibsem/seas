@@ -5,10 +5,21 @@ import pandas as pd
 
 caminhoApp = os.getcwd() + "/seas/"
 
+# DADOS DO BANCO DE PRODUCAO
+
+
+
 print(caminhoApp)
 app = Flask(__name__)
 
-# Configurações do banco de dados
+db_config = {
+    'host': 'db4free.net',
+    'user': 'vitorufsc',
+    'password': 'root2808',
+    'database': 'seasufsc',
+}
+
+# Configurações do banco de dados para uso local
 db_config = {
     'host': 'localhost',
     'user': 'root',
@@ -110,10 +121,17 @@ def enviar_resultados():
     dfResultadoFinalComSolucao = pd.merge(dfResultadoFinal,dfSolucao,how="inner", left_on='idSolucao', right_on='id')
     dfResultadoFinalComSolucao = dfResultadoFinalComSolucao.drop(['outrosfilos', 'idSolucao', 'id'], axis=1)
 
-    colunas = ['nomeSolucao', 'descricao', 'refBibliografica', 'filo', 'quantidade']  # Especifique a ordem desejada das colunas
+    colunas = ['nomeSolucao', 'descricao', 'refBibliografica', 'filo', 'quantidade']
     dfResultadoFinalComSolucao = dfResultadoFinalComSolucao.reindex(columns=colunas)
+
+    dfResultadoFinalComSolucaoAgrupado = dfResultadoFinalComSolucao.groupby(['nomeSolucao', 'descricao', 'refBibliografica']).agg({'filo': ', '.join, 'quantidade': lambda x: ', '.join(map(str, x))}).reset_index()
+    print(dfResultadoFinalComSolucaoAgrupado)
+
+    dfResultadoFinalComSolucaoAgrupadoFiltrado = dfResultadoFinalComSolucaoAgrupado.sort_values(by='filo', key=lambda x: x.str.len(), ascending=False)
+
+    print(dfResultadoFinalComSolucaoAgrupadoFiltrado)
     ################CARREGAR RESPOSTA ################
-    resposta = dfResultadoFinalComSolucao.to_dict('records')
+    resposta = dfResultadoFinalComSolucaoAgrupadoFiltrado.to_dict('records')
     return render_template('solucoes.html', resultados=resposta)
 
 if __name__ == '__main__':

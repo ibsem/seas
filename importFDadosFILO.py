@@ -11,6 +11,7 @@ database = 'seas'
 username = 'root'
 password = 'root'
 
+
 # Caminho para o arquivo Excel
 caminho_excel = '/seas/FontedeDadosSeas.xlsx'
 
