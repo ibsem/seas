@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Resultados da Pesquisa</title>
-</head>
-    <body>
-    <h1>Resultados da Pesquisa</h1>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Seas</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body class="myBackground">
+    <div class="container">
+    <h1 class="titulo-centralizado">Resultados da Pesquisa</h1>
         <form method="POST" action="{{ url_for('enviar_resultados') }}">
-            <table>
+            <table class=" table table-striped table-responsive table-bordered table-transparent">
                 <thead>
                     <tr>
                         <th>Filo</th>
@@ -27,7 +32,15 @@
                 <input type="hidden" name="filo" value="{{ resultado[0] }}">
                 <input type="hidden" name="quantidade" value="{{ resultado[1] }}">
             {% endfor %}
-            <input type="submit" value="Enviar">
+            <input type="submit" value="Enviar" class="btn btn-primary">
+            
         </form>
+        <button onclick="goBack()" class="btn btn-primary">Voltar</button>
+    </div>
     </body>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 </html>

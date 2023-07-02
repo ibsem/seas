@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Seas</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+<body class="myBackground">
+    <h1 class="titulo-centralizado">Soluções</h1>
+    <div class="container">
+    <table class=" table table-striped table-responsive table-bordered table-transparent">
+        <thead>
+            <tr>
+                <th>Nome Solução</th>
+                <th>Descrição</th>
+                <th>Referência Bibliográfica</th>
+                <th>Filo</th>
+                <th>Quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+            <tr>
+                <td>{{ resultado['nomeSolucao'] }}</td>
+                <td>{{ resultado['descricao'] }}</td>
+                <td>{{ resultado['refBibliografica'] }}</td>
+                <td>{{ resultado['filo'] }}</td>
+                <td>{{ resultado['quantidade'] }}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button onclick="goBack()" class="btn btn-primary">Voltar</button>
+</div>
+</body>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+</html>
