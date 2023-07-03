@@ -80,3 +80,21 @@ ul {
 	top: 10px;
 	right: 10px;
 }
+
+.accordion-item {
+	background-color: rgba(255, 255, 255, 0); /* Ajuste a opacidade aqui */
+	color: #000000; /* Cor da fonte (preto) */
+}
+.accordion-body {
+	background-color: rgba(255, 255, 255, 0); /* Ajuste a opacidade aqui */
+	color: #000000; /* Cor da fonte (preto) */
+}
+.accordion-header {
+	background-color: rgba(255, 255, 255, 0.161); /* Ajuste a opacidade aqui */
+	color: #000000; /* Cor da fonte (preto) */
+}
+.accordion-button {
+	background-color: rgba(255, 255, 255, 0.161); /* Ajuste a opacidade aqui */
+	padding: 10px; /* Ajuste o espaçamento interno conforme necessário */
+	color: #000000; /* Cor da fonte (preto) */
+}

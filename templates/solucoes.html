@@ -5,34 +5,65 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Seas</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
         <link rel="stylesheet" href="../static/style.css">
     </head>
 <body class="myBackground">
     <h1 class="titulo-centralizado">Soluções</h1>
     <div class="container">
-    <table class=" table table-responsive table-bordered table-transparent">
-        <thead>
-            <tr>
-                <th>Nome Solução</th>
-                <th>Descrição</th>
-                <th>Referência Bibliográfica</th>
-                <th>Filos</th>
-                <th>Espécies por Filo</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for resultado in resultados %}
-            <tr class="color">
-                <td>{{ resultado['nomeSolucao'] }}</td>
-                <td>{{ resultado['descricao'] }}</td>
-                <td>{{ resultado['refBibliografica'] }}</td>
-                <td>{{ resultado['filo'] }}</td>
-                <td>{{ resultado['quantidade'] }}</td>
-                
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+        <table class="table table-responsive table-bordered table-transparent">
+            <thead>
+                <tr>
+                    <th>Nome Solução</th>
+                    <th>Descrição</th>
+                    <th>Referência Bibliográfica</th>
+                    <th>Filos</th>
+                    <th>Espécies por Filo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for resultado in resultados %}
+                <tr class="color">
+                    <td>{{ resultado['nomeSolucao'] }}</td>
+                    <td>
+                        <div class="accordion" id="descricaoAccordion{{ loop.index }}">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="descricaoHeading{{ loop.index }}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#descricaoCollapse{{ loop.index }}" aria-expanded="false" aria-controls="descricaoCollapse{{ loop.index }}">
+                                        mais...
+                                    </button>
+                                </h2>
+                                <div id="descricaoCollapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="descricaoHeading{{ loop.index }}">
+                                    <div class="accordion-body">
+                                        {{ resultado['descricao'] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="accordion" id="refBibliograficaAccordion{{ loop.index }}">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="refBibliograficaHeading{{ loop.index }}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#refBibliograficaCollapse{{ loop.index }}" aria-expanded="false" aria-controls="refBibliograficaCollapse{{ loop.index }}">
+                                        mais...
+                                    </button>
+                                </h2>
+                                <div id="refBibliograficaCollapse{{ loop.index }}" class="accordion-collapse collapse" aria-labelledby="refBibliograficaHeading{{ loop.index }}">
+                                    <div class="accordion-body">
+                                        {{ resultado['refBibliografica'] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{ resultado['filo'] }}</td>
+                    <td>{{ resultado['quantidade'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
     <button onclick="goBack()" class="btn btn-primary buttom-Color">Voltar</button>
 </div>
 </body>

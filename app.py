@@ -13,6 +13,7 @@ print(caminhoApp)
 app = Flask(__name__)
 
 # Configurações do banco de dados para uso local
+
 db_config = {
     'host': 'localhost',
     'user': 'root',
@@ -25,6 +26,8 @@ db_config = {
     'password': 'root2808',
     'database': 'seasufsc',
 }
+#################configuracao de producao #####################
+
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -134,4 +137,7 @@ def enviar_resultados():
     return render_template('solucoes.html', resultados=resposta)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    #################configuracao de producao #####################
+    app.run(host='0.0.0.0', port=80)
+        
