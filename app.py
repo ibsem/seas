@@ -12,19 +12,18 @@ caminhoApp = os.getcwd() + "/seas/"
 print(caminhoApp)
 app = Flask(__name__)
 
-db_config = {
-    'host': 'db4free.net',
-    'user': 'vitorufsc',
-    'password': 'root2808',
-    'database': 'seasufsc',
-}
-
 # Configurações do banco de dados para uso local
 db_config = {
     'host': 'localhost',
     'user': 'root',
     'password': 'root',
     'database': 'seas',
+}
+db_config = {
+    'host': 'db4free.net',
+    'user': 'vitorufsc',
+    'password': 'root2808',
+    'database': 'seasufsc',
 }
 
 
