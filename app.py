@@ -112,7 +112,7 @@ def enviar_resultados():
     cursor.execute('SELECT id, nomeSolucao, descricao, refBibliografica FROM solucaoFilo')
     resultadosSolucoes = cursor.fetchall()
     dfSolucao = pd.DataFrame(resultadosSolucoes, columns=['id', 'nomeSolucao', 'descricao', 'refBibliografica'])
-    print(dfSolucao.head())
+    #print(dfSolucao.head())
     cursor.close()
     connection.close()
     ################TRATAMENTO DADOS###############
@@ -125,11 +125,11 @@ def enviar_resultados():
     dfResultadoFinalComSolucao = dfResultadoFinalComSolucao.reindex(columns=colunas)
 
     dfResultadoFinalComSolucaoAgrupado = dfResultadoFinalComSolucao.groupby(['nomeSolucao', 'descricao', 'refBibliografica']).agg({'filo': ', '.join, 'quantidade': lambda x: ', '.join(map(str, x))}).reset_index()
-    print(dfResultadoFinalComSolucaoAgrupado)
+    #print(dfResultadoFinalComSolucaoAgrupado)
 
     dfResultadoFinalComSolucaoAgrupadoFiltrado = dfResultadoFinalComSolucaoAgrupado.sort_values(by='filo', key=lambda x: x.str.len(), ascending=False)
 
-    print(dfResultadoFinalComSolucaoAgrupadoFiltrado)
+    #print(dfResultadoFinalComSolucaoAgrupadoFiltrado)
     ################CARREGAR RESPOSTA ################
     resposta = dfResultadoFinalComSolucaoAgrupadoFiltrado.to_dict('records')
     return render_template('solucoes.html', resultados=resposta)

@@ -60,6 +60,23 @@ ul {
 }
 
 .table-transparent {
-	background-color: rgba(8, 125, 41, 0.445) !important;
+	background-color: rgba(143, 170, 188, 0.445) !important;
 }
 
+.titleColor{
+	color: rgba(0, 0, 0, 0.445);
+}
+
+.color{
+	color: rgb(0, 0, 0);
+}
+
+.buttom-Color {
+	background-color:  rgb(206, 17, 17);
+}
+
+.positioning{
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}

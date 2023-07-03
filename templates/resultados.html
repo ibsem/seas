@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="../static/style.css">
     </head>
     <body class="myBackground">
-    <div class="container">
-    <h1 class="titulo-centralizado">Resultados da Pesquisa</h1>
+    <div class="container" style="position:relative">
+    <h1 class="titulo-centralizado">Resultados da Pesquisa - Quantidade de Espécies Existentes apenas no País de Origem</h1>
         <form method="POST" action="{{ url_for('enviar_resultados') }}">
             <table class=" table table-striped table-responsive table-bordered table-transparent">
                 <thead>
@@ -32,9 +32,9 @@
                 <input type="hidden" name="filo" value="{{ resultado[0] }}">
                 <input type="hidden" name="quantidade" value="{{ resultado[1] }}">
             {% endfor %}
-            <input type="submit" value="Enviar" class="btn btn-primary">
+            <input type="submit" value="Partir para as Soluções" class="btn btn-primary" style="position: absolute; right:1%;">
         </form>
-        <button onclick="goBack()" class="btn btn-primary">Voltar</button>
+        <button onclick="goBack()" class="btn btn-primary buttom-Color" style="position: absolute; top: 103,5%;">Retornar as Rotas</button>
     </div>
     </body>
     <script>

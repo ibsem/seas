@@ -10,21 +10,21 @@
 <body class="myBackground">
     <h1 class="titulo-centralizado">Soluções</h1>
     <div class="container">
-    <table class=" table table-striped table-responsive table-bordered table-transparent">
+    <table class=" table table-responsive table-bordered table-transparent">
         <thead>
             <tr>
                 <th>Nome Solução</th>
                 <th>Descrição</th>
                 <th>Referência Bibliográfica</th>
-                <th>Filo</th>
-                <th>Quantidade</th>
+                <th>Filos</th>
+                <th>Espécies por Filo</th>
             </tr>
         </thead>
         <tbody>
             {% for resultado in resultados %}
-            <tr>
+            <tr class="color">
                 <td>{{ resultado['nomeSolucao'] }}</td>
-                <td>{{ resultado['descricao'] }}</td>
+                <td data-bs-toggle="tooltip" data-bs-placement="top" title="{{ resultado['descricao'] }}">"link"</td>
                 <td>{{ resultado['refBibliografica'] }}</td>
                 <td>{{ resultado['filo'] }}</td>
                 <td>{{ resultado['quantidade'] }}</td>
@@ -33,7 +33,7 @@
             {% endfor %}
         </tbody>
     </table>
-    <button onclick="goBack()" class="btn btn-primary">Voltar</button>
+    <button onclick="goBack()" class="btn btn-primary buttom-Color">Voltar</button>
 </div>
 </body>
 <script>
